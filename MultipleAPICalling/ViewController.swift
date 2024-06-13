@@ -17,8 +17,8 @@ class ViewController: UIViewController {
     let tagsURL = "https://tags-generator.p.rapidapi.com/youtubeTags/bollywood"
     let rapidAPIKey = "e103305047msh67c54e4389f5e37p106668jsn6f55a35f4271"
     
-    var quotes: [WelcomeElement] = []
-    var tags: [String] = []
+    var quotes = [WelcomeElement]()
+    var tags = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,7 @@ class ViewController: UIViewController {
     func fetchData() {
             DispatchQueue.global(qos: .userInitiated).async {
                 self.fetchRandomQuote()
-                sleep(5) // Pause for 5 seconds before fetching tags
+                sleep(3) 
                 self.fetchYouTubeTags()
             }
         }
@@ -114,6 +114,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             return cell
         } else {
             return UITableViewCell()
+        }
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if tableView == famousTableView {
+            return 101
+        } else if tableView == tagsTableView {
+            return 57
+        } else {
+            return 0
         }
     }
 }
