@@ -88,16 +88,16 @@ class ViewController: UIViewController {
 // MARK: - TableView Dalegate & Datasource
 extension ViewController: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
-        if tableView == famousTableView {
+       return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+         if tableView == famousTableView {
             return quotes.count
         } else if tableView == tagsTableView {
             return tags.count
         } else {
             return 0
         }
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
         
     }
     
